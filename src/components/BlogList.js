@@ -6,9 +6,9 @@ export default class BlogList extends Component {
     render(){
         const items = this.props.items;
 
-        const blogTemplate = items.map(function (item) {
+        const blogTemplate = items.map(function (item, index) {
                 return (
-                    <div key={item.id}>
+                    <div key={index}>
                         <BlogItem data={item}/>
                     </div>
                 )
