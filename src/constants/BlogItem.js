@@ -1,29 +1,56 @@
 export const items = [
     {
         img: {
-            src: require('../assets/images/1.jpg'),
-            width: '100%',
-            height: '305px',
+            src: require('../assets/images/img1.jpg'),
+            width: '198',
+            height: '208',
             alt: 'Post one'
         },
-        text: 'Sed euismod feugiat sodales. Vivamus dui ipsum, laoreet vitae euismod sit amet, euismod ac est. Sed turpis massa, convallis vitae facilisis eget, malesuada ullamcorper nibh. Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, enim sit amet volutpat sodales, lorem velit fringilla metus, et semper metus sapien non odio. Nulla facilisi.Praesent gravida suscipit leo, eget fermentum magna malesuada ac. Maecenas pulvinar malesuada elementum.'
+        author: 'lutsko86',
+        date: '11 sep 2016',
+        tags: ['JS', 'React'],
+        title: 'Excellent Solution For Your Business',
+        text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. ' +
+        'Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo. ' +
+        'Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac blandit ante orci ut diam. Cras fringilla magna. ' +
+        'Phasellus suscipit, leo a pharetra condimentum, lorem tellus eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. ' +
+        'In tristique orci porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero.' +
+        'Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.'
     },
     {
         img: {
-            src: require('../assets/images/2.jpg'),
-            width: '100%',
-            height: '305px',
+            src: require('../assets/images/img2.jpg'),
+            width: '198',
+            height: '208',
             alt: 'Post two'
         },
-        text: 'Phasellus vel arcu vitae neque sagittis aliquet ac at purus. Vestibulum varius eros in dui sagittis non ultrices orci hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        author: 'lutsko86',
+        date: '11 nov 2016',
+        tags: ['http', 'Protocol', 'Internet'],
+        title: 'We`ll Make Sure Template Works For You',
+        text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. ' +
+        'Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo. ' +
+        'Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac blandit ante orci ut diam. Cras fringilla magna. ' +
+        'Phasellus suscipit, leo a pharetra condimentum, lorem tellus eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. ' +
+        'In tristique orci porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero.' +
+        'Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.'
     },
     {
         img: {
-            src: require('../assets/images/3.jpg'),
-            width: '100%',
-            height: '305px',
+            src: require('../assets/images/img3.jpg'),
+            width: '198',
+            height: '208',
             alt: 'Post three'
         },
-        text: 'Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, enim sit amet volutpat sodales.'
+        author: 'lutsko86',
+        date: '11 dec 2016',
+        tags: ['life', 'planet'],
+        title: 'A Blog Entry',
+        text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. ' +
+        'Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo. ' +
+        'Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac blandit ante orci ut diam. Cras fringilla magna. ' +
+        'Phasellus suscipit, leo a pharetra condimentum, lorem tellus eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. ' +
+        'In tristique orci porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero.' +
+        'Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.'
     }
 ];

@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 export default class TextBox extends Component {
     render(){
         return (
-            <span>
-                {this.props.text}
-            </span>
+            <div className='post_content'>
+                <p>{this.props.text}</p>
+            </div>
         )
     }
 }

@@ -8,8 +8,9 @@ export default class BlogList extends Component {
 
         const blogTemplate = items.map(function (item, index) {
                 return (
-                    <div key={index}>
+                    <div className='article' key={index}>
                         <BlogItem data={item}/>
+                        <div className='clr'></div>
                     </div>
                 )
 
@@ -20,6 +21,5 @@ export default class BlogList extends Component {
                 {blogTemplate}
             </div>
         )
-
     }
 }
