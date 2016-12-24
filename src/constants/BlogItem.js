@@ -6,9 +6,13 @@ export const items = [
             height: '208',
             alt: 'Post one'
         },
-        author: 'lutsko86',
-        date: '11 sep 2016',
-        tags: ['JS', 'React'],
+        meta: {
+            author: null,
+            likes: 32,
+            created_at: '2016-09-11 08:35:32',
+            updated_at: '2016-09-12 08:35:32',
+            tags: ['JS', 'React']
+        },
         title: 'Excellent Solution For Your Business',
         text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. ' +
         'Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo. ' +
@@ -24,9 +28,12 @@ export const items = [
             height: '208',
             alt: 'Post two'
         },
-        author: 'lutsko86',
-        date: '11 nov 2016',
-        tags: ['http', 'Protocol', 'Internet'],
+        meta: {
+            likes: 12,
+            created_at: '2016-10-11 08:35:32',
+            updated_at: '2016-10-12 08:35:32',
+            tags: ['http', 'Protocol', 'Internet']
+        },
         title: 'We`ll Make Sure Template Works For You',
         text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. ' +
         'Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo. ' +
@@ -42,9 +49,13 @@ export const items = [
             height: '208',
             alt: 'Post three'
         },
-        author: 'lutsko86',
-        date: '11 dec 2016',
-        tags: ['life', 'planet'],
+        meta: {
+            author: 'lutsko86',
+            likes: 17,
+            created_at: '2016-11-11 08:35:32',
+            updated_at: '2016-11-12 08:35:32',
+            tags: ['life', 'planet']
+        },
         title: 'A Blog Entry',
         text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. ' +
         'Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo. ' +
