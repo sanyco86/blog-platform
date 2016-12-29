@@ -6,10 +6,10 @@ import Footer from './containers/Footer'
 import './assets/css/app.css'
 
 render(
-    <div className='main'>
-        <div className='header'><Header /></div>
-        <div className='content'><BlogPage /></div>
-        <div className='footer'><Footer /></div>
-    </div>,
-    document.getElementById('root')
+  <div className='main'>
+    <div className='header'><Header /></div>
+    <div className='content'><BlogPage /></div>
+    <div className='footer'><Footer /></div>
+  </div>,
+  document.getElementById('root')
 );
