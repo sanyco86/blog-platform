@@ -1,35 +1,31 @@
 import React, { Component } from 'react'
-import { bind } from 'lodash/function'
-import BlogList from '../components/BlogList'
-import SidebarMenu from '../components/SidebarMenu'
-import { items } from '../constants/BlogItem'
-import PieChart from '../components/PieChart'
+import request from 'superagent'
+import { SERVER_PATH } from '../constants/Data'
+import BlogList from '../components/widgets/BlogList'
+import Paginate from '../components/widgets/Paginate'
 
 export default class BlogPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { items };
-    this.incrementLikes = bind(this.incrementLikes, this);
+    this.state = { items: [] };
   }
-  incrementLikes(itemId) {
-    const newItems = items.map(function (item) {
-      if (item.id === itemId) ++item.meta.likes;
-      return item;
-    });
-    this.setState({items: newItems});
+
+  componentDidMount() {
+    request
+      .get(`${SERVER_PATH}/posts.json`)
+      .send()
+      .end((err, res) => {
+        if (err) throw err;
+        this.setState({items: res.body});
+      })
   }
-  render(){
-    const { items } = this.state,
-      columns = items.map(item => [item.title, item.meta.likes]);
+  render() {
+    const { items } = this.state;
     return (
-      <div className='content_resize'>
-          <div className='mainbar'>
-              <PieChart columns={columns} />
-              <BlogList items={items} handlerLike={this.incrementLikes} />
-              <p className='pages'><small>Page 1 of 2</small> <span>1</span> <a href='#'>2</a> <a href='#'>&raquo;</a></p>
-          </div>
-          <SidebarMenu />
-          <div className='clr'></div>
+      <div>
+        <Paginate />
+        <BlogList items={items} />
+        <Paginate />
       </div>
     )
   }

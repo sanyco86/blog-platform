@@ -1,15 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Header from './containers/Header'
-import BlogPage from './containers/BlogPage'
-import Footer from './containers/Footer'
-import './assets/css/app.css'
+import { Router, browserHistory } from 'react-router'
+import routes from './routes/index'
+import 'bootstrap/dist/css/bootstrap.css';
 
 render(
-  <div className='main'>
-    <div className='header'><Header /></div>
-    <div className='content'><BlogPage /></div>
-    <div className='footer'><Footer /></div>
-  </div>,
+  <Router history={browserHistory} routes={routes} />,
   document.getElementById('root')
 );

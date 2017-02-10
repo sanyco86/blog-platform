@@ -1,7 +1,7 @@
-var path = require('path');
-var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
-var precss = require('precss');
+const path = require('path');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const precss = require('precss');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -13,7 +13,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/assets/'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -43,12 +43,8 @@ module.exports = {
         loader: 'style-loader!css-loader!postcss-loader'
       },
       {
-        test: /\.png$/,
-        loader: 'file?name=[name].[ext]',
-      },
-      {
-        test: /\.jpg$/,
-        loader: 'file?name=[name].[ext]',
+        test: /\.(eot|jpg|png|ttf|svg|woff|woff2)$/,
+        loader: 'url-loader'
       }
     ]
   },
