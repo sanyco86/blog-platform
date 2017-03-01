@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PropTypes, Component } from 'react'
 
 export default class Page extends Component {
   render() {
@@ -9,3 +9,7 @@ export default class Page extends Component {
     )
   }
 }
+
+Page.propTypes = {
+  children: PropTypes.object
+};

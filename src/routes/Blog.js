@@ -1,12 +1,17 @@
 import Main from '../components/layouts/Main/index'
-import BlogPage from '../containers/BlogPage'
-import Post from '../components/Post'
+import Posts from '../containers/Posts'
+import Post from '../containers/Post'
 import AboutUs from '../components/AboutUs'
-import { postsPath } from '../helpers/routes/index'
+import { postPath } from '../helpers/routes/index'
+import { fetchPosts } from '../actions/Posts'
+import { fetchPost } from '../actions/Post'
 
 const Index = {
   path: '/',
-  component: BlogPage
+  component: Posts,
+  prepareData: (store) => {
+    store.dispatch(fetchPosts())
+  }
 };
 
 const About = {
@@ -15,8 +20,11 @@ const About = {
 };
 
 const PostRoute = {
-  path: postsPath(),
-  component: Post
+  path: postPath(),
+  component: Post,
+  prepareData: (store, query, params) => {
+    store.dispatch(fetchPost(params.id))
+  }
 };
 
 export default {

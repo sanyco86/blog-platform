@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PropTypes, Component } from 'react'
 
 export default class Image extends Component {
   render() {
@@ -7,3 +7,7 @@ export default class Image extends Component {
     )
   }
 }
+
+Image.propTypes = {
+  img: PropTypes.object
+};

@@ -8,7 +8,7 @@ import Like from './blog/elements/Like'
 export default class BlogItem extends Component {
 
   render() {
-    const { title, meta, img, text, id } = this.props.data;
+    const { title, meta, img, text, id } = this.props.item;
 
     return (
       <div>
@@ -26,11 +26,15 @@ export default class BlogItem extends Component {
   }
 }
 
-BlogItem.PropTypes = {
+BlogItem.propTypes = {
+  item: PropTypes.object,
+  id: PropTypes.number,
+  title: PropTypes.node,
   meta: PropTypes.shape({
     author: PropTypes.string.isRequired
   }).isRequired,
-  tags: PropTypes.array
+  img: PropTypes.object,
+  text: PropTypes.node,
 };
 
 BlogItem.defaultProps = {

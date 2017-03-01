@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bind } from 'lodash/function'
 import request from 'superagent'
-import { SERVER_PATH } from '../../../../constants/Data'
+import { API_ROOT } from '../../../../constants/API'
 
 export default class Like extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class Like extends Component {
 
   handlerLike() {
     request
-      .post(`${SERVER_PATH}/posts/${this.props.id}/like`)
+      .post(`${API_ROOT}/posts/${this.props.id}/like`)
       .send({ like: true })
       .end((err, res) => {
         if (err) throw err;
@@ -32,6 +32,7 @@ export default class Like extends Component {
 }
 
 Like.propTypes = {
+  id: PropTypes.number,
   likes: PropTypes.number,
   handlerLike: PropTypes.func
 };

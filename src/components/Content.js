@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PropTypes, Component } from 'react'
 import Page from './layouts/Main/Page'
 import SidebarMenu from './layouts/Main/SidebarMenu'
 
@@ -14,3 +14,7 @@ export default class Content extends Component {
     )
   }
 }
+
+Content.propTypes = {
+  children: PropTypes.object
+};

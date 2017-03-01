@@ -15,6 +15,6 @@ export default class Main extends Component {
   }
 }
 
-Main.PropTypes = {
+Main.propTypes = {
   children: PropTypes.node
 };

@@ -8,7 +8,7 @@ export default class BlogList extends Component {
       blogTemplate = items.map(
         function (item) {
           return (
-            <BlogItem data={item} key={item.id} />
+            <BlogItem item={item} key={item.id} />
           )
         }
       );

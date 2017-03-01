@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PropTypes, Component } from 'react'
 
 export default class TextBox extends Component {
   render() {
@@ -7,3 +7,7 @@ export default class TextBox extends Component {
     )
   }
 }
+
+TextBox.propTypes = {
+  text: PropTypes.node
+};

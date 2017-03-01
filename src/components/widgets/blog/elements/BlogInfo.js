@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PropTypes, Component } from 'react'
 import { retrieveDate } from '../../../../helpers/Date'
 
 export default class BlogInfo extends Component {
@@ -20,3 +20,7 @@ export default class BlogInfo extends Component {
     )
   }
 }
+
+BlogInfo.propTypes = {
+  meta: PropTypes.object
+};
