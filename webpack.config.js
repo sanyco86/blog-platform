@@ -1,46 +1,34 @@
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
+const root = path.join(process.cwd(), 'src');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
+
   entry: [
-    'webpack-hot-middleware/client',
-    'babel-polyfill',
-    './src/index'
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:3001',
+    'webpack/hot/only-dev-server',
+    './src/index.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/assets/'
+    publicPath: '/assets/',
+    filename: 'bundle.js'
   },
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
-  ],
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        loaders: ['eslint'],
-        include: [
-          path.resolve(__dirname, 'src')
-        ]
-      }
-    ],
     loaders: [
       {
-        loaders: ['react-hot', 'babel-loader'],
-        include: [
-          path.resolve(__dirname, 'src')
-        ],
         test: /\.js$/,
-        plugins: ['transform-runtime']
+        exclude: /node_modules/,
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
+        loaders: [
+          'style-loader',
+          'css-loader?importLoaders=1'
+        ]
       },
       {
         test: /\.(eot|jpg|png|ttf|svg|woff|woff2)$/,
@@ -48,7 +36,10 @@ module.exports = {
       }
     ]
   },
-  postcss: function () {
-    return [autoprefixer, precss];
-  }
+  resolve: {
+    root: root
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };

@@ -1,44 +1,49 @@
-import React, { PropTypes, Component } from 'react'
-import Title from './blog/elements/Title'
-import BlogInfo from './blog/elements/BlogInfo'
-import Image from './blog/elements/Image'
-import TextBox from './blog/elements/TextBox'
-import Like from './blog/elements/Like'
+import React, { PropTypes } from 'react'
+import { Item } from 'semantic-ui-react'
+import TextBox from 'components/elements/TextBox'
+import Link from 'components/elements/Link'
+import Image from 'components/elements/Image'
+import Meta from './Meta'
 
-export default class BlogItem extends Component {
+const BlogItem = ({item}) => (
+  <Item>
+    <Image {...Object.assign(imageDefaultStyle, item.image)} />
 
-  render() {
-    const { title, meta, img, text, id } = this.props.item;
+    <Item.Content>
+      <Item.Header as='h2'>
+        <Link to={item.link}>
+          {item.title}
+        </Link>
+      </Item.Header>
 
-    return (
-      <div>
-        <Title title={title} id={id} />
-        <BlogInfo meta={meta} />
-        <hr/>
-        <Image img={img} />
-        <hr/>
-        <TextBox text={text} />
-        <hr/>
-        <Like likes={meta.likes} id={id} />
-        <hr/>
-      </div>
-    )
+      <Item.Description>
+        <TextBox>{item.text}</TextBox>
+      </Item.Description>
+      <br/>
+      <Item.Meta>
+        <Meta {...item.meta} />
+      </Item.Meta>
+    </Item.Content>
+  </Item>
+);
+
+const imageDefaultStyle = {
+  item: {},
+  height: 64,
+  style: {
+    marginRight: 10,
+    float: 'left'
   }
-}
+};
 
 BlogItem.propTypes = {
-  item: PropTypes.object,
-  id: PropTypes.number,
-  title: PropTypes.node,
-  meta: PropTypes.shape({
-    author: PropTypes.string.isRequired
-  }).isRequired,
-  img: PropTypes.object,
-  text: PropTypes.node,
+  item: PropTypes.shape({
+    id: PropTypes.number,
+    image: PropTypes.object,
+    title: PropTypes.string,
+    text: PropTypes.string,
+    meta: PropTypes.object,
+  })
 };
 
-BlogItem.defaultProps = {
-  meta: {
-    author: 'admin'
-  }
-};
+export default BlogItem

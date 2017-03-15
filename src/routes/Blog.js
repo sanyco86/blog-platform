@@ -1,37 +1,48 @@
-import Main from '../components/layouts/Main/index'
-import Posts from '../containers/Posts'
-import Post from '../containers/Post'
-import AboutUs from '../components/AboutUs'
-import { postPath } from '../helpers/routes/index'
-import { fetchPosts } from '../actions/Posts'
-import { fetchPost } from '../actions/Post'
+import MainLayout from 'components/layouts/MainLayout'
+import AboutPage from 'components/pages/AboutPage'
+import BlogPageContainer from 'containers/BlogPageContainer'
+import PostPageContainer from 'containers/PostPageContainer'
+import { postPath, aboutPath } from 'helpers/routes'
+import { fetchPosts } from 'actions/Posts'
+import { fetchPost, receivePost } from 'actions/Post'
+import { get } from 'lodash/object'
+import { find } from 'lodash/collection'
 
-const Index = {
+const IndexRoute = {
   path: '/',
-  component: Posts,
+  component: BlogPageContainer,
   prepareData: (store) => {
-    store.dispatch(fetchPosts())
+    if (get(store.getState(), 'posts.items', []).length == 0) {
+      store.dispatch(fetchPosts());
+    }
   }
 };
 
-const About = {
-  path: '/about',
-  component: AboutUs
+const AboutRoute = {
+  path: aboutPath(),
+  component: AboutPage
 };
 
 const PostRoute = {
   path: postPath(),
-  component: Post,
+  component: PostPageContainer,
   prepareData: (store, query, params) => {
-    store.dispatch(fetchPost(params.id))
+    const items = get(store.getState(), 'posts.items', false);
+    const item = items && find(items, { id: +params.id });
+
+    if (item) {
+      store.dispatch(receivePost(item));
+    } else {
+      store.dispatch(fetchPost(params.id));
+    }
   }
 };
 
 export default {
-  component: Main,
+  component: MainLayout,
   childRoutes: [
-    Index,
-    About,
+    IndexRoute,
+    AboutRoute,
     PostRoute
   ]
 }
