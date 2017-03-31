@@ -2,6 +2,7 @@ import MainLayout from 'components/layouts/MainLayout'
 import AboutPage from 'components/pages/AboutPage'
 import BlogPageContainer from 'containers/BlogPageContainer'
 import PostPageContainer from 'containers/PostPageContainer'
+import initialLoad from 'helpers/initialLoad'
 import { postPath, aboutPath } from 'helpers/routes'
 import { fetchPosts } from 'actions/Posts'
 import { fetchPost, receivePost } from 'actions/Post'
@@ -12,8 +13,9 @@ const IndexRoute = {
   path: '/',
   component: BlogPageContainer,
   prepareData: (store) => {
+    if (initialLoad()) return;
     if (get(store.getState(), 'posts.items', []).length == 0) {
-      store.dispatch(fetchPosts());
+      return store.dispatch(fetchPosts());
     }
   }
 };
@@ -31,9 +33,9 @@ const PostRoute = {
     const item = items && find(items, { id: +params.id });
 
     if (item) {
-      store.dispatch(receivePost(item));
+      return store.dispatch(receivePost(item));
     } else {
-      store.dispatch(fetchPost(params.id));
+      return store.dispatch(fetchPost(params.id));
     }
   }
 };

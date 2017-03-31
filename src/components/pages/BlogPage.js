@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Grid } from 'semantic-ui-react'
 import Search from 'components/elements/Search'
 import Loader from 'components/widgets/Loader'
-import BlogList from 'components/widgets/BlogList'
+import Index from 'components/pages/Index'
 import PaginatedListContainer from 'components/containers/PaginatedListContainer'
 import PaginatorContainer from 'components/containers/PaginatorContainer'
 import PieChartContainer from 'components/containers/PieChartContainer'
@@ -17,7 +17,7 @@ const BlogPage = ({
     <Grid>
       <Grid.Column width={11}>
         <PaginatedListContainer
-          as={BlogList}
+          as={Index}
           items={items}
           page={page}
         />

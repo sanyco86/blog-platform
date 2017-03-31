@@ -1,1 +1,1 @@
-export const API_ROOT = 'http://localhost:3000';
+export const API_ROOT = 'https://blog-platform-backend.herokuapp.com/api/v1';

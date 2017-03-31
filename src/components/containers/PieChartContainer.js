@@ -3,7 +3,7 @@ import PieChart from 'components/widgets/PieChart'
 
 const PieChartContainer = ({items}) => {
   const pieChartData = items.map(
-    (item) => ([item.text, item.meta.likes.count || 0])
+    (item) => ([item.title, item.meta.likes.count || 0])
   );
 
   return (
