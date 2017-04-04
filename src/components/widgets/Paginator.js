@@ -8,7 +8,7 @@ const Paginator = ({ page, links }) => (
       {links.map((link, index) => (
         <Menu.Item
           key={index}
-          active={index + 1 == page}
+          active={index + 1 === page}
           width={10}
         >
           <Link to={link}>{index + 1}</Link>

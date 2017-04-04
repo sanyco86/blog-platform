@@ -1,9 +1,11 @@
 import MainLayout from 'components/layouts/MainLayout'
 import AboutPage from 'components/pages/AboutPage'
+import ContactPage from 'components/pages/ContactPage'
+import PostEdit from 'forms/post/edit'
 import BlogPageContainer from 'containers/BlogPageContainer'
 import PostPageContainer from 'containers/PostPageContainer'
 import initialLoad from 'helpers/initialLoad'
-import { postPath, aboutPath } from 'helpers/routes'
+import { postPath, aboutPath, contactPath, editPostPath } from 'helpers/routes'
 import { fetchPosts } from 'actions/Posts'
 import { fetchPost, receivePost } from 'actions/Post'
 import { get } from 'lodash/object'
@@ -14,7 +16,7 @@ const IndexRoute = {
   component: BlogPageContainer,
   prepareData: (store) => {
     if (initialLoad()) return;
-    if (get(store.getState(), 'posts.items', []).length == 0) {
+    if (get(store.getState(), 'posts.items', []).length === 0) {
       return store.dispatch(fetchPosts());
     }
   }
@@ -23,6 +25,20 @@ const IndexRoute = {
 const AboutRoute = {
   path: aboutPath(),
   component: AboutPage
+};
+
+const ContactRoute = {
+  path: contactPath(),
+  component: ContactPage
+};
+
+const EditPostRoute = {
+  path: editPostPath(),
+  component: PostEdit,
+  prepareData: (store, query, params) => {
+    if (initialLoad()) return;
+    return store.dispatch(fetchPost(params.id));
+  }
 };
 
 const PostRoute = {
@@ -44,7 +60,9 @@ export default {
   component: MainLayout,
   childRoutes: [
     IndexRoute,
+    PostRoute,
+    EditPostRoute,
     AboutRoute,
-    PostRoute
+    ContactRoute
   ]
 }

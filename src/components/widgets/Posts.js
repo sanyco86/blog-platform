@@ -12,7 +12,7 @@ const initialState = {
 
 const changeLikeItem = (state, index, value) => {
   const itemIndex = findIndex(state.items, { id: index });
-  return state.likes.map((item, i) => i == itemIndex ? value : item);
+  return state.likes.map((item, i) => i === itemIndex ? value : item);
 };
 
 export default function(state = initialState, action) {
@@ -59,7 +59,7 @@ export default function(state = initialState, action) {
     case likeTypes.SEND_LIKE_SUCCESS:
       return assign({}, state, {
         items: state.items.map(
-          item => item.id == action.id ? action.response : item
+          item => item.id === action.id ? action.response : item
         ),
         likes: changeLikeItem(state, action.id, {
           isRequesting: false,

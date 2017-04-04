@@ -24,13 +24,13 @@ export default function(state = initialState, action) {
       const oldItem = find(state.items, { id: action.post.id });
 
       return oldItem ? assign({}, state, {
-        items: map(state.items, item => item == oldItem ? action.post : item)
+        items: map(state.items, item => item === oldItem ? action.post : item)
       }) : initialState;
     }
 
     case likeTypes.SEND_LIKE_REQUEST:
       return assign({}, state, {
-        items: map(state.items, item => item.id == action.id ?
+        items: map(state.items, item => item.id === action.id ?
           assign({}, item, {
             meta: assign({}, item.meta, {
               likes: assign({}, item.meta.likes, {
@@ -43,7 +43,7 @@ export default function(state = initialState, action) {
 
     case likeTypes.SEND_LIKE_ERROR:
       return assign({}, state, {
-        items: map(state.items, item => item.id == action.id ?
+        items: map(state.items, item => item.id === action.id ?
           assign({}, item, {
             meta: assign({}, item.meta, {
               likes: assign({}, item.meta.likes, {
@@ -57,7 +57,7 @@ export default function(state = initialState, action) {
     case likeTypes.SEND_LIKE_SUCCESS:
       return assign({}, state, {
         items: map(state.items, item =>
-        item.id == action.response.id ? action.response : item)
+        item.id === action.response.id ? action.response : item)
       });
 
     default:

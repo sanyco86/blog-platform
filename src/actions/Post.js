@@ -20,3 +20,18 @@ export function fetchPost(id) {
     }
   };
 }
+
+export function updatePost(values) {
+  return {
+    [API_CALL]: {
+      endpoint: `/posts/${values.id}`,
+      method: 'PATCH',
+      query: {},
+      types: {
+        request: types.UPDATE_POST_REQUEST,
+        success: types.UPDATE_POST_SUCCESS,
+        errors: types.UPDATE_POST_ERROR
+      }
+    }
+  };
+}
